@@ -1,1 +1,10 @@
-src/public/
+node_modules
+build
+dist
+coverage
+bin
+generated
+tasks
+.env
+.env.example
+.lintstagedrc

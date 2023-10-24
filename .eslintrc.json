@@ -1,44 +1,58 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:node/recommended"
-  ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
   },
+  "extends": [
+    "airbnb-base",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:jest/recommended",
+    "plugin:promise/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.eslint.json"
+  },
+  "plugins": ["@typescript-eslint", "eslint-comments", "jest", "promise", "import", "prettier"],
   "rules": {
-    "@typescript-eslint/explicit-member-accessibility": "warn",
-    "@typescript-eslint/no-misused-promises": 0,
-    "@typescript-eslint/no-floating-promises": 0,
-    "max-len": [
-      "warn",
+    "prettier/prettier": "error",
+    "import/prefer-default-export": "off",
+    "import/no-cycle": 0,
+    "no-use-before-define": [
+      "error",
       {
-        "code": 80
+        "functions": false,
+        "classes": true,
+        "variables": true
       }
     ],
-    "comma-dangle": ["warn", "always-multiline"],
-    "no-console": 1,
-    "no-extra-boolean-cast": 0,
-    "semi": 1,
-    "indent": ["warn", 2],
-    "quotes": ["warn", "single"],
-    "node/no-process-env": 1,
-    "node/no-unsupported-features/es-syntax": [
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-use-before-define": [
       "error",
-      { "ignores" : ["modules"] }
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "typedefs": true
+      }
     ],
-    "node/no-missing-import": 0,
-    "node/no-unpublished-import": 0
+    "import/no-extraneous-dependencies": "off",
+    "consistent-return": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-param-reassign": 0,
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }]
   },
   "settings": {
-    "node": {
-      "tryExtensions": [".js", ".json", ".node", ".ts"]
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
     }
   }
 }

@@ -1,13 +1,13 @@
-import './pre-start'; // Must be the first import
-import logger from 'jet-logger';
+import 'dotenv/config';
+import { schema, permissions } from '@config/schema';
+import { applyMiddleware } from 'graphql-middleware';
+import { initializeApolloExpress } from '@config/apollo';
+import { initializeDatabaseConnection } from '@config/db';
 
-import EnvVars from '@src/constants/EnvVars';
-import server from './server';
+const initializeServer = async (): Promise<void> => {
+  const generatedSchema = applyMiddleware(schema, permissions);
+  initializeApolloExpress(generatedSchema);
+  await initializeDatabaseConnection();
+};
 
-
-// **** Run **** //
-
-const SERVER_START_MSG = ('Express server started on port: ' + 
-  EnvVars.Port.toString());
-
-server.listen(EnvVars.Port, () => logger.info(SERVER_START_MSG));
+initializeServer();
