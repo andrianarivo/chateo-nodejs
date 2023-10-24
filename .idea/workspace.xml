@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="feat: Message Created PubSub">
-      <change afterPath="$PROJECT_DIR$/src/config/pubsub.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/apollo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/apollo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/message/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/message/typeDefs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/message.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/message.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1698129182497</updated>
       <workItem from="1698129186691" duration="15535000" />
-      <workItem from="1698162869065" duration="6778000" />
+      <workItem from="1698162869065" duration="9561000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -112,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698159479553</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: Message Created PubSub">
+      <option name="closed" value="true" />
+      <created>1698181180912</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1698181180912</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -8,10 +8,11 @@ import depthLimit from 'graphql-depth-limit';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
-import { GraphQLSchema, execute, subscribe } from 'graphql';
+import { GraphQLSchema } from 'graphql';
 import { log } from '@services/logger.service';
 import { morgan } from '@middlewares';
-import { SubscriptionServer } from 'subscriptions-transport-ws';
+import { WebSocketServer } from 'ws';
+import { useServer } from 'graphql-ws/lib/use/ws';
 import { context } from './context';
 
 const port = process.env.PORT || 4000;
@@ -33,10 +34,12 @@ export const initializeApolloExpress = async (schema: GraphQLSchema) => {
 
   const httpServer = http.createServer(app);
 
-  const subscriptionServer = SubscriptionServer.create(
-    { schema, execute, subscribe },
-    { server: httpServer, path: '/graphql' },
-  );
+  const wsServer = new WebSocketServer({
+    server: httpServer,
+    path: '/graphql',
+  });
+
+  const serverCleanup = useServer({ schema }, wsServer);
 
   const server = new ApolloServer({
     introspection: process.env.NODE_ENV !== 'production',
@@ -50,7 +53,7 @@ export const initializeApolloExpress = async (schema: GraphQLSchema) => {
         async serverWillStart() {
           return {
             async drainServer() {
-              subscriptionServer.close();
+              serverCleanup.dispose();
             },
           };
         },
