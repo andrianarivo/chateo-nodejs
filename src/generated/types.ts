@@ -117,8 +117,72 @@ export type Logout = {
 
 export type LogoutResult = AuthError | Logout;
 
+export type Message = {
+  __typename?: 'Message';
+  _id?: Maybe<Scalars['ObjectId']>;
+  author: Scalars['ObjectId'];
+  content: Scalars['String'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  room: Scalars['ObjectId'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type MessageBy = {
+  __typename?: 'MessageBy';
+  entity: Message;
+};
+
+export type MessageCreated = {
+  __typename?: 'MessageCreated';
+  entity: Message;
+  message: Scalars['String'];
+};
+
+export type MessageCreatedInput = {
+  author: Scalars['ObjectId'];
+  content: Scalars['String'];
+  room: Scalars['ObjectId'];
+};
+
+export type MessageCreatedResult = MessageCreated | MessageNotFound;
+
+export type MessageNotFound = {
+  __typename?: 'MessageNotFound';
+  message: Scalars['String'];
+};
+
+export type MessageRemoved = {
+  __typename?: 'MessageRemoved';
+  entity: Message;
+  message: Scalars['String'];
+};
+
+export type MessageRemovedResult = MessageNotFound | MessageRemoved;
+
+export type MessageResult = MessageBy | MessageNotFound;
+
+export type MessageUpdated = {
+  __typename?: 'MessageUpdated';
+  entity: Message;
+  message: Scalars['String'];
+};
+
+export type MessageUpdatedInput = {
+  content: Scalars['String'];
+};
+
+export type MessageUpdatedResult = MessageNotFound | MessageUpdated;
+
+export type Messages = {
+  __typename?: 'Messages';
+  entities: Array<Message>;
+};
+
+export type MessagesResult = MessageNotFound | Messages;
+
 export type Mutation = {
   __typename?: 'Mutation';
+  createMessage: MessageCreatedResult;
   createRoom: RoomCreatedResult;
   deleteAdmin: AdminDeletedResult;
   deleteUser: UserDeletedResult;
@@ -126,10 +190,17 @@ export type Mutation = {
   logout: LogoutResult;
   refresh: RefreshResult;
   register: RegisterResult;
+  removeMessage: MessageRemovedResult;
   removeRoom: RoomRemovedResult;
   updateAdmin: AdminUpdatedResult;
+  updateMessage: MessageUpdatedResult;
   updateRoom: RoomUpdatedResult;
   updateUser: UserUpdatedResult;
+};
+
+
+export type MutationCreateMessageArgs = {
+  input: MessageCreatedInput;
 };
 
 
@@ -158,6 +229,11 @@ export type MutationRegisterArgs = {
 };
 
 
+export type MutationRemoveMessageArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
 export type MutationRemoveRoomArgs = {
   id: Scalars['ObjectId'];
 };
@@ -166,6 +242,12 @@ export type MutationRemoveRoomArgs = {
 export type MutationUpdateAdminArgs = {
   id: Scalars['ObjectId'];
   input: AdminUpdatedInput;
+};
+
+
+export type MutationUpdateMessageArgs = {
+  id: Scalars['ObjectId'];
+  input: MessageUpdatedInput;
 };
 
 
@@ -190,8 +272,12 @@ export type Query = {
   getAdminByField: AdminResult;
   getAdminById: AdminResult;
   getAllAdmins: AdminsResult;
+  getAllMessages: MessagesResult;
   getAllRooms: RoomsResult;
   getAllUsers: UsersResult;
+  getMessageByField: MessageResult;
+  getMessageById: MessageResult;
+  getMessagesByRoom: MessagesResult;
   getRoomByField: RoomResult;
   getRoomById: RoomResult;
   getUserByField: UserResult;
@@ -217,6 +303,13 @@ export type QueryGetAllAdminsArgs = {
 };
 
 
+export type QueryGetAllMessagesArgs = {
+  filter?: InputMaybe<FilterInput>;
+  paginate?: InputMaybe<PaginationInput>;
+  sort?: InputMaybe<SortInput>;
+};
+
+
 export type QueryGetAllRoomsArgs = {
   filter?: InputMaybe<FilterInput>;
   paginate?: InputMaybe<PaginationInput>;
@@ -225,6 +318,24 @@ export type QueryGetAllRoomsArgs = {
 
 
 export type QueryGetAllUsersArgs = {
+  filter?: InputMaybe<FilterInput>;
+  paginate?: InputMaybe<PaginationInput>;
+  sort?: InputMaybe<SortInput>;
+};
+
+
+export type QueryGetMessageByFieldArgs = {
+  field: Scalars['String'];
+  value: Scalars['String'];
+};
+
+
+export type QueryGetMessageByIdArgs = {
+  id: Scalars['ObjectId'];
+};
+
+
+export type QueryGetMessagesByRoomArgs = {
   filter?: InputMaybe<FilterInput>;
   paginate?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<SortInput>;
@@ -494,6 +605,20 @@ export type ResolversTypes = {
   LoginResult: ResolversTypes['AuthError'] | ResolversTypes['Login'];
   Logout: ResolverTypeWrapper<Logout>;
   LogoutResult: ResolversTypes['AuthError'] | ResolversTypes['Logout'];
+  Message: ResolverTypeWrapper<Message>;
+  MessageBy: ResolverTypeWrapper<MessageBy>;
+  MessageCreated: ResolverTypeWrapper<MessageCreated>;
+  MessageCreatedInput: MessageCreatedInput;
+  MessageCreatedResult: ResolversTypes['MessageCreated'] | ResolversTypes['MessageNotFound'];
+  MessageNotFound: ResolverTypeWrapper<MessageNotFound>;
+  MessageRemoved: ResolverTypeWrapper<MessageRemoved>;
+  MessageRemovedResult: ResolversTypes['MessageNotFound'] | ResolversTypes['MessageRemoved'];
+  MessageResult: ResolversTypes['MessageBy'] | ResolversTypes['MessageNotFound'];
+  MessageUpdated: ResolverTypeWrapper<MessageUpdated>;
+  MessageUpdatedInput: MessageUpdatedInput;
+  MessageUpdatedResult: ResolversTypes['MessageNotFound'] | ResolversTypes['MessageUpdated'];
+  Messages: ResolverTypeWrapper<Messages>;
+  MessagesResult: ResolversTypes['MessageNotFound'] | ResolversTypes['Messages'];
   Mutation: ResolverTypeWrapper<{}>;
   ObjectId: ResolverTypeWrapper<Scalars['ObjectId']>;
   PaginationInput: PaginationInput;
@@ -559,6 +684,20 @@ export type ResolversParentTypes = {
   LoginResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Login'];
   Logout: Logout;
   LogoutResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Logout'];
+  Message: Message;
+  MessageBy: MessageBy;
+  MessageCreated: MessageCreated;
+  MessageCreatedInput: MessageCreatedInput;
+  MessageCreatedResult: ResolversParentTypes['MessageCreated'] | ResolversParentTypes['MessageNotFound'];
+  MessageNotFound: MessageNotFound;
+  MessageRemoved: MessageRemoved;
+  MessageRemovedResult: ResolversParentTypes['MessageNotFound'] | ResolversParentTypes['MessageRemoved'];
+  MessageResult: ResolversParentTypes['MessageBy'] | ResolversParentTypes['MessageNotFound'];
+  MessageUpdated: MessageUpdated;
+  MessageUpdatedInput: MessageUpdatedInput;
+  MessageUpdatedResult: ResolversParentTypes['MessageNotFound'] | ResolversParentTypes['MessageUpdated'];
+  Messages: Messages;
+  MessagesResult: ResolversParentTypes['MessageNotFound'] | ResolversParentTypes['Messages'];
   Mutation: {};
   ObjectId: Scalars['ObjectId'];
   PaginationInput: PaginationInput;
@@ -689,7 +828,71 @@ export type LogoutResultResolvers<ContextType = Context, ParentType extends Reso
   __resolveType: TypeResolveFn<'AuthError' | 'Logout', ParentType, ContextType>;
 };
 
+export type MessageResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Message'] = ResolversParentTypes['Message']> = {
+  _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
+  author?: Resolver<ResolversTypes['ObjectId'], ParentType, ContextType>;
+  content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  room?: Resolver<ResolversTypes['ObjectId'], ParentType, ContextType>;
+  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageByResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageBy'] = ResolversParentTypes['MessageBy']> = {
+  entity?: Resolver<ResolversTypes['Message'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageCreatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageCreated'] = ResolversParentTypes['MessageCreated']> = {
+  entity?: Resolver<ResolversTypes['Message'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageCreatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageCreatedResult'] = ResolversParentTypes['MessageCreatedResult']> = {
+  __resolveType: TypeResolveFn<'MessageCreated' | 'MessageNotFound', ParentType, ContextType>;
+};
+
+export type MessageNotFoundResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageNotFound'] = ResolversParentTypes['MessageNotFound']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageRemovedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageRemoved'] = ResolversParentTypes['MessageRemoved']> = {
+  entity?: Resolver<ResolversTypes['Message'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageRemovedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageRemovedResult'] = ResolversParentTypes['MessageRemovedResult']> = {
+  __resolveType: TypeResolveFn<'MessageNotFound' | 'MessageRemoved', ParentType, ContextType>;
+};
+
+export type MessageResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageResult'] = ResolversParentTypes['MessageResult']> = {
+  __resolveType: TypeResolveFn<'MessageBy' | 'MessageNotFound', ParentType, ContextType>;
+};
+
+export type MessageUpdatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageUpdated'] = ResolversParentTypes['MessageUpdated']> = {
+  entity?: Resolver<ResolversTypes['Message'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessageUpdatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessageUpdatedResult'] = ResolversParentTypes['MessageUpdatedResult']> = {
+  __resolveType: TypeResolveFn<'MessageNotFound' | 'MessageUpdated', ParentType, ContextType>;
+};
+
+export type MessagesResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Messages'] = ResolversParentTypes['Messages']> = {
+  entities?: Resolver<Array<ResolversTypes['Message']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type MessagesResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['MessagesResult'] = ResolversParentTypes['MessagesResult']> = {
+  __resolveType: TypeResolveFn<'MessageNotFound' | 'Messages', ParentType, ContextType>;
+};
+
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  createMessage?: Resolver<ResolversTypes['MessageCreatedResult'], ParentType, ContextType, RequireFields<MutationCreateMessageArgs, 'input'>>;
   createRoom?: Resolver<ResolversTypes['RoomCreatedResult'], ParentType, ContextType, RequireFields<MutationCreateRoomArgs, 'input'>>;
   deleteAdmin?: Resolver<ResolversTypes['AdminDeletedResult'], ParentType, ContextType, RequireFields<MutationDeleteAdminArgs, 'id'>>;
   deleteUser?: Resolver<ResolversTypes['UserDeletedResult'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'id'>>;
@@ -697,8 +900,10 @@ export type MutationResolvers<ContextType = Context, ParentType extends Resolver
   logout?: Resolver<ResolversTypes['LogoutResult'], ParentType, ContextType>;
   refresh?: Resolver<ResolversTypes['RefreshResult'], ParentType, ContextType>;
   register?: Resolver<ResolversTypes['RegisterResult'], ParentType, ContextType, RequireFields<MutationRegisterArgs, 'input'>>;
+  removeMessage?: Resolver<ResolversTypes['MessageRemovedResult'], ParentType, ContextType, RequireFields<MutationRemoveMessageArgs, 'id'>>;
   removeRoom?: Resolver<ResolversTypes['RoomRemovedResult'], ParentType, ContextType, RequireFields<MutationRemoveRoomArgs, 'id'>>;
   updateAdmin?: Resolver<ResolversTypes['AdminUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateAdminArgs, 'id' | 'input'>>;
+  updateMessage?: Resolver<ResolversTypes['MessageUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateMessageArgs, 'id' | 'input'>>;
   updateRoom?: Resolver<ResolversTypes['RoomUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateRoomArgs, 'id' | 'input'>>;
   updateUser?: Resolver<ResolversTypes['UserUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'id' | 'input'>>;
 };
@@ -711,8 +916,12 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   getAdminByField?: Resolver<ResolversTypes['AdminResult'], ParentType, ContextType, RequireFields<QueryGetAdminByFieldArgs, 'field' | 'value'>>;
   getAdminById?: Resolver<ResolversTypes['AdminResult'], ParentType, ContextType, RequireFields<QueryGetAdminByIdArgs, 'id'>>;
   getAllAdmins?: Resolver<ResolversTypes['AdminsResult'], ParentType, ContextType, Partial<QueryGetAllAdminsArgs>>;
+  getAllMessages?: Resolver<ResolversTypes['MessagesResult'], ParentType, ContextType, Partial<QueryGetAllMessagesArgs>>;
   getAllRooms?: Resolver<ResolversTypes['RoomsResult'], ParentType, ContextType, Partial<QueryGetAllRoomsArgs>>;
   getAllUsers?: Resolver<ResolversTypes['UsersResult'], ParentType, ContextType, Partial<QueryGetAllUsersArgs>>;
+  getMessageByField?: Resolver<ResolversTypes['MessageResult'], ParentType, ContextType, RequireFields<QueryGetMessageByFieldArgs, 'field' | 'value'>>;
+  getMessageById?: Resolver<ResolversTypes['MessageResult'], ParentType, ContextType, RequireFields<QueryGetMessageByIdArgs, 'id'>>;
+  getMessagesByRoom?: Resolver<ResolversTypes['MessagesResult'], ParentType, ContextType, Partial<QueryGetMessagesByRoomArgs>>;
   getRoomByField?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByFieldArgs, 'field' | 'value'>>;
   getRoomById?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByIdArgs, 'id'>>;
   getUserByField?: Resolver<ResolversTypes['UserResult'], ParentType, ContextType, RequireFields<QueryGetUserByFieldArgs, 'field' | 'value'>>;
@@ -873,6 +1082,18 @@ export type Resolvers<ContextType = Context> = {
   LoginResult?: LoginResultResolvers<ContextType>;
   Logout?: LogoutResolvers<ContextType>;
   LogoutResult?: LogoutResultResolvers<ContextType>;
+  Message?: MessageResolvers<ContextType>;
+  MessageBy?: MessageByResolvers<ContextType>;
+  MessageCreated?: MessageCreatedResolvers<ContextType>;
+  MessageCreatedResult?: MessageCreatedResultResolvers<ContextType>;
+  MessageNotFound?: MessageNotFoundResolvers<ContextType>;
+  MessageRemoved?: MessageRemovedResolvers<ContextType>;
+  MessageRemovedResult?: MessageRemovedResultResolvers<ContextType>;
+  MessageResult?: MessageResultResolvers<ContextType>;
+  MessageUpdated?: MessageUpdatedResolvers<ContextType>;
+  MessageUpdatedResult?: MessageUpdatedResultResolvers<ContextType>;
+  Messages?: MessagesResolvers<ContextType>;
+  MessagesResult?: MessagesResultResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   ObjectId?: GraphQLScalarType;
   Query?: QueryResolvers<ContextType>;
