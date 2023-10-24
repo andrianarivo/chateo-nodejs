@@ -14,7 +14,7 @@ interface QueryOptions {
   } | null;
 }
 
-export const getAll = async (
+export const getAll = async <T>(
   EntityModel: Model<any>,
   options: QueryOptions,
   ErrorMessage: string,
@@ -35,11 +35,11 @@ export const getAll = async (
     .limit(limit)
     .lean();
   if (foundEntities && Array.isArray(foundEntities) && foundEntities.length > 0)
-    return customResponse.entities(typeNameSuccess, foundEntities);
+    return customResponse.entities<T>(typeNameSuccess, foundEntities);
   return customResponse.message(typeNameError, ErrorMessage);
 };
 
-export const getById = async (
+export const getById = async <T>(
   EntityModel: Model<any>,
   id: Types.ObjectId,
   ErrorMessage: string,
@@ -47,7 +47,7 @@ export const getById = async (
   typeNameError: string,
 ) => {
   const foundEntity = await EntityModel.findById(id).lean();
-  if (foundEntity) return customResponse.entity(typeNameSuccess, foundEntity);
+  if (foundEntity) return customResponse.entity<T>(typeNameSuccess, foundEntity);
   return customResponse.message(typeNameError, ErrorMessage);
 };
 

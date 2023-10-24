@@ -117,77 +117,24 @@ export type Logout = {
 
 export type LogoutResult = AuthError | Logout;
 
-export type Manager = {
-  __typename?: 'Manager';
-  _id?: Maybe<Scalars['ObjectId']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  email?: Maybe<Scalars['String']>;
-  firstname?: Maybe<Scalars['String']>;
-  lastname?: Maybe<Scalars['String']>;
-  role?: Maybe<Auth>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-export type ManagerBy = {
-  __typename?: 'ManagerBy';
-  entity: Manager;
-};
-
-export type ManagerNotFound = {
-  __typename?: 'ManagerNotFound';
-  message: Scalars['String'];
-};
-
-export type ManagerRemoved = {
-  __typename?: 'ManagerRemoved';
-  entity: Manager;
-  message: Scalars['String'];
-};
-
-export type ManagerRemovedResult = ManagerNotFound | ManagerRemoved;
-
-export type ManagerResult = ManagerBy | ManagerNotFound;
-
-export type ManagerUpdated = {
-  __typename?: 'ManagerUpdated';
-  entity: Manager;
-  message: Scalars['String'];
-};
-
-export type ManagerUpdatedInput = {
-  firstname?: InputMaybe<Scalars['String']>;
-  lastname?: InputMaybe<Scalars['String']>;
-};
-
-export type ManagerUpdatedResult = ManagerNotFound | ManagerUpdated;
-
-export type Managers = {
-  __typename?: 'Managers';
-  entities: Array<Manager>;
-};
-
-export type ManagersResult = ManagerNotFound | Managers;
-
 export type Mutation = {
   __typename?: 'Mutation';
-  createPost: PostCreatedResult;
+  createRoom: RoomCreatedResult;
   deleteAdmin: AdminDeletedResult;
   deleteUser: UserDeletedResult;
   login: LoginResult;
   logout: LogoutResult;
   refresh: RefreshResult;
   register: RegisterResult;
-  removeManager: ManagerRemovedResult;
-  removePost: PostRemovedResult;
+  removeRoom: RoomRemovedResult;
   updateAdmin: AdminUpdatedResult;
-  updateManager: ManagerUpdatedResult;
-  updatePost: PostUpdatedResult;
+  updateRoom: RoomUpdatedResult;
   updateUser: UserUpdatedResult;
 };
 
 
-export type MutationCreatePostArgs = {
-  input: PostCreatedInput;
+export type MutationCreateRoomArgs = {
+  input: RoomCreatedInput;
 };
 
 
@@ -211,12 +158,7 @@ export type MutationRegisterArgs = {
 };
 
 
-export type MutationRemoveManagerArgs = {
-  id: Scalars['ObjectId'];
-};
-
-
-export type MutationRemovePostArgs = {
+export type MutationRemoveRoomArgs = {
   id: Scalars['ObjectId'];
 };
 
@@ -227,15 +169,9 @@ export type MutationUpdateAdminArgs = {
 };
 
 
-export type MutationUpdateManagerArgs = {
+export type MutationUpdateRoomArgs = {
   id: Scalars['ObjectId'];
-  input: ManagerUpdatedInput;
-};
-
-
-export type MutationUpdatePostArgs = {
-  id: Scalars['ObjectId'];
-  input: PostUpdatedInput;
+  input: RoomUpdatedInput;
 };
 
 
@@ -249,83 +185,15 @@ export type PaginationInput = {
   page?: InputMaybe<Scalars['Int']>;
 };
 
-export type Post = {
-  __typename?: 'Post';
-  _id?: Maybe<Scalars['ObjectId']>;
-  content?: Maybe<Scalars['String']>;
-  createdAt?: Maybe<Scalars['DateTime']>;
-  title?: Maybe<Scalars['String']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  user?: Maybe<User>;
-};
-
-export type PostBy = {
-  __typename?: 'PostBy';
-  entity: Post;
-};
-
-export type PostCreated = {
-  __typename?: 'PostCreated';
-  entity: Post;
-  message: Scalars['String'];
-};
-
-export type PostCreatedInput = {
-  content: Scalars['String'];
-  title: Scalars['String'];
-  user: Scalars['ObjectId'];
-};
-
-export type PostCreatedResult = PostCreated | PostNotFound;
-
-export type PostNotFound = {
-  __typename?: 'PostNotFound';
-  message: Scalars['String'];
-};
-
-export type PostRemoved = {
-  __typename?: 'PostRemoved';
-  entity: Post;
-  message: Scalars['String'];
-};
-
-export type PostRemovedResult = PostNotFound | PostRemoved;
-
-export type PostResult = PostBy | PostNotFound;
-
-export type PostUpdated = {
-  __typename?: 'PostUpdated';
-  entity: Post;
-  message: Scalars['String'];
-};
-
-export type PostUpdatedInput = {
-  content?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  user?: InputMaybe<Scalars['ObjectId']>;
-};
-
-export type PostUpdatedResult = PostNotFound | PostUpdated;
-
-export type Posts = {
-  __typename?: 'Posts';
-  entities: Array<Post>;
-};
-
-export type PostsResult = PostNotFound | Posts;
-
 export type Query = {
   __typename?: 'Query';
   getAdminByField: AdminResult;
   getAdminById: AdminResult;
   getAllAdmins: AdminsResult;
-  getAllManagers: ManagersResult;
-  getAllPosts: PostsResult;
+  getAllRooms: RoomsResult;
   getAllUsers: UsersResult;
-  getManagerByField: ManagerResult;
-  getManagerById: ManagerResult;
-  getPostByField: PostResult;
-  getPostById: PostResult;
+  getRoomByField: RoomResult;
+  getRoomById: RoomResult;
   getUserByField: UserResult;
   getUserById: UserResult;
 };
@@ -349,14 +217,7 @@ export type QueryGetAllAdminsArgs = {
 };
 
 
-export type QueryGetAllManagersArgs = {
-  filter?: InputMaybe<FilterInput>;
-  paginate?: InputMaybe<PaginationInput>;
-  sort?: InputMaybe<SortInput>;
-};
-
-
-export type QueryGetAllPostsArgs = {
+export type QueryGetAllRoomsArgs = {
   filter?: InputMaybe<FilterInput>;
   paginate?: InputMaybe<PaginationInput>;
   sort?: InputMaybe<SortInput>;
@@ -370,24 +231,13 @@ export type QueryGetAllUsersArgs = {
 };
 
 
-export type QueryGetManagerByFieldArgs = {
+export type QueryGetRoomByFieldArgs = {
   field: Scalars['String'];
   value: Scalars['String'];
 };
 
 
-export type QueryGetManagerByIdArgs = {
-  id: Scalars['ObjectId'];
-};
-
-
-export type QueryGetPostByFieldArgs = {
-  field: Scalars['String'];
-  value: Scalars['String'];
-};
-
-
-export type QueryGetPostByIdArgs = {
+export type QueryGetRoomByIdArgs = {
   id: Scalars['ObjectId'];
 };
 
@@ -425,6 +275,67 @@ export type RegisterInput = {
 };
 
 export type RegisterResult = AuthError | Register;
+
+export type Room = {
+  __typename?: 'Room';
+  _id?: Maybe<Scalars['ObjectId']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  isPrivate?: Maybe<Scalars['Boolean']>;
+  name: Scalars['String'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+export type RoomBy = {
+  __typename?: 'RoomBy';
+  entity: Room;
+};
+
+export type RoomCreated = {
+  __typename?: 'RoomCreated';
+  entity: Room;
+  message: Scalars['String'];
+};
+
+export type RoomCreatedInput = {
+  isPrivate?: InputMaybe<Scalars['Boolean']>;
+  name: Scalars['String'];
+};
+
+export type RoomCreatedResult = RoomCreated | RoomNotFound;
+
+export type RoomNotFound = {
+  __typename?: 'RoomNotFound';
+  message: Scalars['String'];
+};
+
+export type RoomRemoved = {
+  __typename?: 'RoomRemoved';
+  entity: Room;
+  message: Scalars['String'];
+};
+
+export type RoomRemovedResult = RoomNotFound | RoomRemoved;
+
+export type RoomResult = RoomBy | RoomNotFound;
+
+export type RoomUpdated = {
+  __typename?: 'RoomUpdated';
+  entity: Room;
+  message: Scalars['String'];
+};
+
+export type RoomUpdatedInput = {
+  name: Scalars['String'];
+};
+
+export type RoomUpdatedResult = RoomNotFound | RoomUpdated;
+
+export type Rooms = {
+  __typename?: 'Rooms';
+  entities: Array<Room>;
+};
+
+export type RoomsResult = RoomNotFound | Rooms;
 
 export type SortInput = {
   field?: InputMaybe<SortableField>;
@@ -583,40 +494,29 @@ export type ResolversTypes = {
   LoginResult: ResolversTypes['AuthError'] | ResolversTypes['Login'];
   Logout: ResolverTypeWrapper<Logout>;
   LogoutResult: ResolversTypes['AuthError'] | ResolversTypes['Logout'];
-  Manager: ResolverTypeWrapper<Manager>;
-  ManagerBy: ResolverTypeWrapper<ManagerBy>;
-  ManagerNotFound: ResolverTypeWrapper<ManagerNotFound>;
-  ManagerRemoved: ResolverTypeWrapper<ManagerRemoved>;
-  ManagerRemovedResult: ResolversTypes['ManagerNotFound'] | ResolversTypes['ManagerRemoved'];
-  ManagerResult: ResolversTypes['ManagerBy'] | ResolversTypes['ManagerNotFound'];
-  ManagerUpdated: ResolverTypeWrapper<ManagerUpdated>;
-  ManagerUpdatedInput: ManagerUpdatedInput;
-  ManagerUpdatedResult: ResolversTypes['ManagerNotFound'] | ResolversTypes['ManagerUpdated'];
-  Managers: ResolverTypeWrapper<Managers>;
-  ManagersResult: ResolversTypes['ManagerNotFound'] | ResolversTypes['Managers'];
   Mutation: ResolverTypeWrapper<{}>;
   ObjectId: ResolverTypeWrapper<Scalars['ObjectId']>;
   PaginationInput: PaginationInput;
-  Post: ResolverTypeWrapper<Post>;
-  PostBy: ResolverTypeWrapper<PostBy>;
-  PostCreated: ResolverTypeWrapper<PostCreated>;
-  PostCreatedInput: PostCreatedInput;
-  PostCreatedResult: ResolversTypes['PostCreated'] | ResolversTypes['PostNotFound'];
-  PostNotFound: ResolverTypeWrapper<PostNotFound>;
-  PostRemoved: ResolverTypeWrapper<PostRemoved>;
-  PostRemovedResult: ResolversTypes['PostNotFound'] | ResolversTypes['PostRemoved'];
-  PostResult: ResolversTypes['PostBy'] | ResolversTypes['PostNotFound'];
-  PostUpdated: ResolverTypeWrapper<PostUpdated>;
-  PostUpdatedInput: PostUpdatedInput;
-  PostUpdatedResult: ResolversTypes['PostNotFound'] | ResolversTypes['PostUpdated'];
-  Posts: ResolverTypeWrapper<Posts>;
-  PostsResult: ResolversTypes['PostNotFound'] | ResolversTypes['Posts'];
   Query: ResolverTypeWrapper<{}>;
   Refresh: ResolverTypeWrapper<Refresh>;
   RefreshResult: ResolversTypes['AuthError'] | ResolversTypes['Refresh'];
   Register: ResolverTypeWrapper<Register>;
   RegisterInput: RegisterInput;
   RegisterResult: ResolversTypes['AuthError'] | ResolversTypes['Register'];
+  Room: ResolverTypeWrapper<Room>;
+  RoomBy: ResolverTypeWrapper<RoomBy>;
+  RoomCreated: ResolverTypeWrapper<RoomCreated>;
+  RoomCreatedInput: RoomCreatedInput;
+  RoomCreatedResult: ResolversTypes['RoomCreated'] | ResolversTypes['RoomNotFound'];
+  RoomNotFound: ResolverTypeWrapper<RoomNotFound>;
+  RoomRemoved: ResolverTypeWrapper<RoomRemoved>;
+  RoomRemovedResult: ResolversTypes['RoomNotFound'] | ResolversTypes['RoomRemoved'];
+  RoomResult: ResolversTypes['RoomBy'] | ResolversTypes['RoomNotFound'];
+  RoomUpdated: ResolverTypeWrapper<RoomUpdated>;
+  RoomUpdatedInput: RoomUpdatedInput;
+  RoomUpdatedResult: ResolversTypes['RoomNotFound'] | ResolversTypes['RoomUpdated'];
+  Rooms: ResolverTypeWrapper<Rooms>;
+  RoomsResult: ResolversTypes['RoomNotFound'] | ResolversTypes['Rooms'];
   SortInput: SortInput;
   SortOrder: SortOrder;
   SortableField: SortableField;
@@ -659,40 +559,29 @@ export type ResolversParentTypes = {
   LoginResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Login'];
   Logout: Logout;
   LogoutResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Logout'];
-  Manager: Manager;
-  ManagerBy: ManagerBy;
-  ManagerNotFound: ManagerNotFound;
-  ManagerRemoved: ManagerRemoved;
-  ManagerRemovedResult: ResolversParentTypes['ManagerNotFound'] | ResolversParentTypes['ManagerRemoved'];
-  ManagerResult: ResolversParentTypes['ManagerBy'] | ResolversParentTypes['ManagerNotFound'];
-  ManagerUpdated: ManagerUpdated;
-  ManagerUpdatedInput: ManagerUpdatedInput;
-  ManagerUpdatedResult: ResolversParentTypes['ManagerNotFound'] | ResolversParentTypes['ManagerUpdated'];
-  Managers: Managers;
-  ManagersResult: ResolversParentTypes['ManagerNotFound'] | ResolversParentTypes['Managers'];
   Mutation: {};
   ObjectId: Scalars['ObjectId'];
   PaginationInput: PaginationInput;
-  Post: Post;
-  PostBy: PostBy;
-  PostCreated: PostCreated;
-  PostCreatedInput: PostCreatedInput;
-  PostCreatedResult: ResolversParentTypes['PostCreated'] | ResolversParentTypes['PostNotFound'];
-  PostNotFound: PostNotFound;
-  PostRemoved: PostRemoved;
-  PostRemovedResult: ResolversParentTypes['PostNotFound'] | ResolversParentTypes['PostRemoved'];
-  PostResult: ResolversParentTypes['PostBy'] | ResolversParentTypes['PostNotFound'];
-  PostUpdated: PostUpdated;
-  PostUpdatedInput: PostUpdatedInput;
-  PostUpdatedResult: ResolversParentTypes['PostNotFound'] | ResolversParentTypes['PostUpdated'];
-  Posts: Posts;
-  PostsResult: ResolversParentTypes['PostNotFound'] | ResolversParentTypes['Posts'];
   Query: {};
   Refresh: Refresh;
   RefreshResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Refresh'];
   Register: Register;
   RegisterInput: RegisterInput;
   RegisterResult: ResolversParentTypes['AuthError'] | ResolversParentTypes['Register'];
+  Room: Room;
+  RoomBy: RoomBy;
+  RoomCreated: RoomCreated;
+  RoomCreatedInput: RoomCreatedInput;
+  RoomCreatedResult: ResolversParentTypes['RoomCreated'] | ResolversParentTypes['RoomNotFound'];
+  RoomNotFound: RoomNotFound;
+  RoomRemoved: RoomRemoved;
+  RoomRemovedResult: ResolversParentTypes['RoomNotFound'] | ResolversParentTypes['RoomRemoved'];
+  RoomResult: ResolversParentTypes['RoomBy'] | ResolversParentTypes['RoomNotFound'];
+  RoomUpdated: RoomUpdated;
+  RoomUpdatedInput: RoomUpdatedInput;
+  RoomUpdatedResult: ResolversParentTypes['RoomNotFound'] | ResolversParentTypes['RoomUpdated'];
+  Rooms: Rooms;
+  RoomsResult: ResolversParentTypes['RoomNotFound'] | ResolversParentTypes['Rooms'];
   SortInput: SortInput;
   String: Scalars['String'];
   User: User;
@@ -800,73 +689,17 @@ export type LogoutResultResolvers<ContextType = Context, ParentType extends Reso
   __resolveType: TypeResolveFn<'AuthError' | 'Logout', ParentType, ContextType>;
 };
 
-export type ManagerResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Manager'] = ResolversParentTypes['Manager']> = {
-  _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
-  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  email?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  firstname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  lastname?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  role?: Resolver<Maybe<ResolversTypes['Auth']>, ParentType, ContextType>;
-  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagerByResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerBy'] = ResolversParentTypes['ManagerBy']> = {
-  entity?: Resolver<ResolversTypes['Manager'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagerNotFoundResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerNotFound'] = ResolversParentTypes['ManagerNotFound']> = {
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagerRemovedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerRemoved'] = ResolversParentTypes['ManagerRemoved']> = {
-  entity?: Resolver<ResolversTypes['Manager'], ParentType, ContextType>;
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagerRemovedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerRemovedResult'] = ResolversParentTypes['ManagerRemovedResult']> = {
-  __resolveType: TypeResolveFn<'ManagerNotFound' | 'ManagerRemoved', ParentType, ContextType>;
-};
-
-export type ManagerResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerResult'] = ResolversParentTypes['ManagerResult']> = {
-  __resolveType: TypeResolveFn<'ManagerBy' | 'ManagerNotFound', ParentType, ContextType>;
-};
-
-export type ManagerUpdatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerUpdated'] = ResolversParentTypes['ManagerUpdated']> = {
-  entity?: Resolver<ResolversTypes['Manager'], ParentType, ContextType>;
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagerUpdatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagerUpdatedResult'] = ResolversParentTypes['ManagerUpdatedResult']> = {
-  __resolveType: TypeResolveFn<'ManagerNotFound' | 'ManagerUpdated', ParentType, ContextType>;
-};
-
-export type ManagersResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Managers'] = ResolversParentTypes['Managers']> = {
-  entities?: Resolver<Array<ResolversTypes['Manager']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type ManagersResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['ManagersResult'] = ResolversParentTypes['ManagersResult']> = {
-  __resolveType: TypeResolveFn<'ManagerNotFound' | 'Managers', ParentType, ContextType>;
-};
-
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  createPost?: Resolver<ResolversTypes['PostCreatedResult'], ParentType, ContextType, RequireFields<MutationCreatePostArgs, 'input'>>;
+  createRoom?: Resolver<ResolversTypes['RoomCreatedResult'], ParentType, ContextType, RequireFields<MutationCreateRoomArgs, 'input'>>;
   deleteAdmin?: Resolver<ResolversTypes['AdminDeletedResult'], ParentType, ContextType, RequireFields<MutationDeleteAdminArgs, 'id'>>;
   deleteUser?: Resolver<ResolversTypes['UserDeletedResult'], ParentType, ContextType, RequireFields<MutationDeleteUserArgs, 'id'>>;
   login?: Resolver<ResolversTypes['LoginResult'], ParentType, ContextType, RequireFields<MutationLoginArgs, 'input'>>;
   logout?: Resolver<ResolversTypes['LogoutResult'], ParentType, ContextType>;
   refresh?: Resolver<ResolversTypes['RefreshResult'], ParentType, ContextType>;
   register?: Resolver<ResolversTypes['RegisterResult'], ParentType, ContextType, RequireFields<MutationRegisterArgs, 'input'>>;
-  removeManager?: Resolver<ResolversTypes['ManagerRemovedResult'], ParentType, ContextType, RequireFields<MutationRemoveManagerArgs, 'id'>>;
-  removePost?: Resolver<ResolversTypes['PostRemovedResult'], ParentType, ContextType, RequireFields<MutationRemovePostArgs, 'id'>>;
+  removeRoom?: Resolver<ResolversTypes['RoomRemovedResult'], ParentType, ContextType, RequireFields<MutationRemoveRoomArgs, 'id'>>;
   updateAdmin?: Resolver<ResolversTypes['AdminUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateAdminArgs, 'id' | 'input'>>;
-  updateManager?: Resolver<ResolversTypes['ManagerUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateManagerArgs, 'id' | 'input'>>;
-  updatePost?: Resolver<ResolversTypes['PostUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdatePostArgs, 'id' | 'input'>>;
+  updateRoom?: Resolver<ResolversTypes['RoomUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateRoomArgs, 'id' | 'input'>>;
   updateUser?: Resolver<ResolversTypes['UserUpdatedResult'], ParentType, ContextType, RequireFields<MutationUpdateUserArgs, 'id' | 'input'>>;
 };
 
@@ -874,80 +707,14 @@ export interface ObjectIdScalarConfig extends GraphQLScalarTypeConfig<ResolversT
   name: 'ObjectId';
 }
 
-export type PostResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = {
-  _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
-  content?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostByResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostBy'] = ResolversParentTypes['PostBy']> = {
-  entity?: Resolver<ResolversTypes['Post'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostCreatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostCreated'] = ResolversParentTypes['PostCreated']> = {
-  entity?: Resolver<ResolversTypes['Post'], ParentType, ContextType>;
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostCreatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostCreatedResult'] = ResolversParentTypes['PostCreatedResult']> = {
-  __resolveType: TypeResolveFn<'PostCreated' | 'PostNotFound', ParentType, ContextType>;
-};
-
-export type PostNotFoundResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostNotFound'] = ResolversParentTypes['PostNotFound']> = {
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostRemovedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostRemoved'] = ResolversParentTypes['PostRemoved']> = {
-  entity?: Resolver<ResolversTypes['Post'], ParentType, ContextType>;
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostRemovedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostRemovedResult'] = ResolversParentTypes['PostRemovedResult']> = {
-  __resolveType: TypeResolveFn<'PostNotFound' | 'PostRemoved', ParentType, ContextType>;
-};
-
-export type PostResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostResult'] = ResolversParentTypes['PostResult']> = {
-  __resolveType: TypeResolveFn<'PostBy' | 'PostNotFound', ParentType, ContextType>;
-};
-
-export type PostUpdatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostUpdated'] = ResolversParentTypes['PostUpdated']> = {
-  entity?: Resolver<ResolversTypes['Post'], ParentType, ContextType>;
-  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostUpdatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostUpdatedResult'] = ResolversParentTypes['PostUpdatedResult']> = {
-  __resolveType: TypeResolveFn<'PostNotFound' | 'PostUpdated', ParentType, ContextType>;
-};
-
-export type PostsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Posts'] = ResolversParentTypes['Posts']> = {
-  entities?: Resolver<Array<ResolversTypes['Post']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type PostsResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PostsResult'] = ResolversParentTypes['PostsResult']> = {
-  __resolveType: TypeResolveFn<'PostNotFound' | 'Posts', ParentType, ContextType>;
-};
-
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   getAdminByField?: Resolver<ResolversTypes['AdminResult'], ParentType, ContextType, RequireFields<QueryGetAdminByFieldArgs, 'field' | 'value'>>;
   getAdminById?: Resolver<ResolversTypes['AdminResult'], ParentType, ContextType, RequireFields<QueryGetAdminByIdArgs, 'id'>>;
   getAllAdmins?: Resolver<ResolversTypes['AdminsResult'], ParentType, ContextType, Partial<QueryGetAllAdminsArgs>>;
-  getAllManagers?: Resolver<ResolversTypes['ManagersResult'], ParentType, ContextType, Partial<QueryGetAllManagersArgs>>;
-  getAllPosts?: Resolver<ResolversTypes['PostsResult'], ParentType, ContextType, Partial<QueryGetAllPostsArgs>>;
+  getAllRooms?: Resolver<ResolversTypes['RoomsResult'], ParentType, ContextType, Partial<QueryGetAllRoomsArgs>>;
   getAllUsers?: Resolver<ResolversTypes['UsersResult'], ParentType, ContextType, Partial<QueryGetAllUsersArgs>>;
-  getManagerByField?: Resolver<ResolversTypes['ManagerResult'], ParentType, ContextType, RequireFields<QueryGetManagerByFieldArgs, 'field' | 'value'>>;
-  getManagerById?: Resolver<ResolversTypes['ManagerResult'], ParentType, ContextType, RequireFields<QueryGetManagerByIdArgs, 'id'>>;
-  getPostByField?: Resolver<ResolversTypes['PostResult'], ParentType, ContextType, RequireFields<QueryGetPostByFieldArgs, 'field' | 'value'>>;
-  getPostById?: Resolver<ResolversTypes['PostResult'], ParentType, ContextType, RequireFields<QueryGetPostByIdArgs, 'id'>>;
+  getRoomByField?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByFieldArgs, 'field' | 'value'>>;
+  getRoomById?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByIdArgs, 'id'>>;
   getUserByField?: Resolver<ResolversTypes['UserResult'], ParentType, ContextType, RequireFields<QueryGetUserByFieldArgs, 'field' | 'value'>>;
   getUserById?: Resolver<ResolversTypes['UserResult'], ParentType, ContextType, RequireFields<QueryGetUserByIdArgs, 'id'>>;
 };
@@ -970,6 +737,68 @@ export type RegisterResolvers<ContextType = Context, ParentType extends Resolver
 
 export type RegisterResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RegisterResult'] = ResolversParentTypes['RegisterResult']> = {
   __resolveType: TypeResolveFn<'AuthError' | 'Register', ParentType, ContextType>;
+};
+
+export type RoomResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Room'] = ResolversParentTypes['Room']> = {
+  _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
+  createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  isPrivate?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  updatedAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomByResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomBy'] = ResolversParentTypes['RoomBy']> = {
+  entity?: Resolver<ResolversTypes['Room'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomCreatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomCreated'] = ResolversParentTypes['RoomCreated']> = {
+  entity?: Resolver<ResolversTypes['Room'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomCreatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomCreatedResult'] = ResolversParentTypes['RoomCreatedResult']> = {
+  __resolveType: TypeResolveFn<'RoomCreated' | 'RoomNotFound', ParentType, ContextType>;
+};
+
+export type RoomNotFoundResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomNotFound'] = ResolversParentTypes['RoomNotFound']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomRemovedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomRemoved'] = ResolversParentTypes['RoomRemoved']> = {
+  entity?: Resolver<ResolversTypes['Room'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomRemovedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomRemovedResult'] = ResolversParentTypes['RoomRemovedResult']> = {
+  __resolveType: TypeResolveFn<'RoomNotFound' | 'RoomRemoved', ParentType, ContextType>;
+};
+
+export type RoomResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomResult'] = ResolversParentTypes['RoomResult']> = {
+  __resolveType: TypeResolveFn<'RoomBy' | 'RoomNotFound', ParentType, ContextType>;
+};
+
+export type RoomUpdatedResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomUpdated'] = ResolversParentTypes['RoomUpdated']> = {
+  entity?: Resolver<ResolversTypes['Room'], ParentType, ContextType>;
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomUpdatedResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomUpdatedResult'] = ResolversParentTypes['RoomUpdatedResult']> = {
+  __resolveType: TypeResolveFn<'RoomNotFound' | 'RoomUpdated', ParentType, ContextType>;
+};
+
+export type RoomsResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Rooms'] = ResolversParentTypes['Rooms']> = {
+  entities?: Resolver<Array<ResolversTypes['Room']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type RoomsResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['RoomsResult'] = ResolversParentTypes['RoomsResult']> = {
+  __resolveType: TypeResolveFn<'RoomNotFound' | 'Rooms', ParentType, ContextType>;
 };
 
 export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
@@ -1044,35 +873,25 @@ export type Resolvers<ContextType = Context> = {
   LoginResult?: LoginResultResolvers<ContextType>;
   Logout?: LogoutResolvers<ContextType>;
   LogoutResult?: LogoutResultResolvers<ContextType>;
-  Manager?: ManagerResolvers<ContextType>;
-  ManagerBy?: ManagerByResolvers<ContextType>;
-  ManagerNotFound?: ManagerNotFoundResolvers<ContextType>;
-  ManagerRemoved?: ManagerRemovedResolvers<ContextType>;
-  ManagerRemovedResult?: ManagerRemovedResultResolvers<ContextType>;
-  ManagerResult?: ManagerResultResolvers<ContextType>;
-  ManagerUpdated?: ManagerUpdatedResolvers<ContextType>;
-  ManagerUpdatedResult?: ManagerUpdatedResultResolvers<ContextType>;
-  Managers?: ManagersResolvers<ContextType>;
-  ManagersResult?: ManagersResultResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   ObjectId?: GraphQLScalarType;
-  Post?: PostResolvers<ContextType>;
-  PostBy?: PostByResolvers<ContextType>;
-  PostCreated?: PostCreatedResolvers<ContextType>;
-  PostCreatedResult?: PostCreatedResultResolvers<ContextType>;
-  PostNotFound?: PostNotFoundResolvers<ContextType>;
-  PostRemoved?: PostRemovedResolvers<ContextType>;
-  PostRemovedResult?: PostRemovedResultResolvers<ContextType>;
-  PostResult?: PostResultResolvers<ContextType>;
-  PostUpdated?: PostUpdatedResolvers<ContextType>;
-  PostUpdatedResult?: PostUpdatedResultResolvers<ContextType>;
-  Posts?: PostsResolvers<ContextType>;
-  PostsResult?: PostsResultResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Refresh?: RefreshResolvers<ContextType>;
   RefreshResult?: RefreshResultResolvers<ContextType>;
   Register?: RegisterResolvers<ContextType>;
   RegisterResult?: RegisterResultResolvers<ContextType>;
+  Room?: RoomResolvers<ContextType>;
+  RoomBy?: RoomByResolvers<ContextType>;
+  RoomCreated?: RoomCreatedResolvers<ContextType>;
+  RoomCreatedResult?: RoomCreatedResultResolvers<ContextType>;
+  RoomNotFound?: RoomNotFoundResolvers<ContextType>;
+  RoomRemoved?: RoomRemovedResolvers<ContextType>;
+  RoomRemovedResult?: RoomRemovedResultResolvers<ContextType>;
+  RoomResult?: RoomResultResolvers<ContextType>;
+  RoomUpdated?: RoomUpdatedResolvers<ContextType>;
+  RoomUpdatedResult?: RoomUpdatedResultResolvers<ContextType>;
+  Rooms?: RoomsResolvers<ContextType>;
+  RoomsResult?: RoomsResultResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
   UserBy?: UserByResolvers<ContextType>;
   UserDeleted?: UserDeletedResolvers<ContextType>;

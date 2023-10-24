@@ -8,12 +8,12 @@ export const customResponse = {
     role: returnedRole,
     message: resultMessage,
   }),
-  entities: (typeName: any, data: Array<object>, resultMessage = '') => ({
+  entities: <T>(typeName: any, data: Array<T>, resultMessage = '') => ({
     __typename: typeName,
     entities: data,
     ...(resultMessage !== '' && { message: resultMessage }),
   }),
-  entity: (typeName: any, data: object) => ({
+  entity: <T>(typeName: any, data: T) => ({
     __typename: typeName,
     entity: data,
   }),
