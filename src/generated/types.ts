@@ -120,7 +120,7 @@ export type LogoutResult = AuthError | Logout;
 export type Message = {
   __typename?: 'Message';
   _id?: Maybe<Scalars['ObjectId']>;
-  author: Scalars['ObjectId'];
+  author: User;
   content: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
   room: Scalars['ObjectId'];
@@ -832,7 +832,7 @@ export type LogoutResultResolvers<ContextType = Context, ParentType extends Reso
 
 export type MessageResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Message'] = ResolversParentTypes['Message']> = {
   _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
-  author?: Resolver<ResolversTypes['ObjectId'], ParentType, ContextType>;
+  author?: Resolver<ResolversTypes['User'], ParentType, ContextType>;
   content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   room?: Resolver<ResolversTypes['ObjectId'], ParentType, ContextType>;

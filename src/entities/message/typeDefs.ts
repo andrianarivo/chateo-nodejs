@@ -6,7 +6,7 @@ export const typeDefs = gql`
     _id: ObjectId
     # Add your fields here #
     content: String!
-    author: ObjectId!
+    author: User!
     room: ObjectId!
     createdAt: DateTime
     updatedAt: DateTime

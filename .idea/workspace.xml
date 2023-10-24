@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="feat: CRUD Message and Message by Room">
+    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="feat: Get Me">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/resolvers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/resolvers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/user/typeDefs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/message/interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/message/interface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/message/typeDefs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/message/typeDefs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/message.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/message.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1698129182497</updated>
-      <workItem from="1698129186691" duration="13516000" />
+      <workItem from="1698129186691" duration="14742000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -91,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698155476729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat: Get Me">
+      <option name="closed" value="true" />
+      <created>1698158286460</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698158286460</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +121,7 @@
     <MESSAGE value="chore: Install GQL with Typescript" />
     <MESSAGE value="feat: CRUD Room" />
     <MESSAGE value="feat: CRUD Message and Message by Room" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: CRUD Message and Message by Room" />
+    <MESSAGE value="feat: Get Me" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Get Me" />
   </component>
 </project>

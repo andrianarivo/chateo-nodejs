@@ -14,6 +14,7 @@ export const getAllByRoom = async <T>(
   const skip = (page - 1) * limit;
   // Setup the query
   const foundEntities = await EntityModel.find({ room: options.room })
+    .populate('author')
     .sort(options.sort && { [options.sort.field as string]: options.sort.order })
     .skip(skip)
     .limit(limit)
