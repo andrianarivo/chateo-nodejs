@@ -72,4 +72,9 @@ export const typeDefs = gql`
     updateMessage(id: ObjectId!, input: MessageUpdatedInput!): MessageUpdatedResult!
     removeMessage(id: ObjectId!): MessageRemovedResult!
   }
+
+  # Subscriptions
+  type Subscription {
+    messageCreated: MessageCreatedResult!
+  }
 `;

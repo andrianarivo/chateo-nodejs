@@ -464,6 +464,11 @@ export enum SortableField {
   CreatedAt = 'createdAt'
 }
 
+export type Subscription = {
+  __typename?: 'Subscription';
+  messageCreated: MessageCreatedResult;
+};
+
 export type User = {
   __typename?: 'User';
   _id?: Maybe<Scalars['ObjectId']>;
@@ -648,6 +653,7 @@ export type ResolversTypes = {
   SortOrder: SortOrder;
   SortableField: SortableField;
   String: ResolverTypeWrapper<Scalars['String']>;
+  Subscription: ResolverTypeWrapper<{}>;
   User: ResolverTypeWrapper<User>;
   UserBy: ResolverTypeWrapper<UserBy>;
   UserDeleted: ResolverTypeWrapper<UserDeleted>;
@@ -725,6 +731,7 @@ export type ResolversParentTypes = {
   RoomsResult: ResolversParentTypes['RoomNotFound'] | ResolversParentTypes['Rooms'];
   SortInput: SortInput;
   String: Scalars['String'];
+  Subscription: {};
   User: User;
   UserBy: UserBy;
   UserDeleted: UserDeleted;
@@ -1013,6 +1020,10 @@ export type RoomsResultResolvers<ContextType = Context, ParentType extends Resol
   __resolveType: TypeResolveFn<'RoomNotFound' | 'Rooms', ParentType, ContextType>;
 };
 
+export type SubscriptionResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Subscription'] = ResolversParentTypes['Subscription']> = {
+  messageCreated?: SubscriptionResolver<ResolversTypes['MessageCreatedResult'], "messageCreated", ParentType, ContextType>;
+};
+
 export type UserResolvers<ContextType = Context, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   _id?: Resolver<Maybe<ResolversTypes['ObjectId']>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
@@ -1116,6 +1127,7 @@ export type Resolvers<ContextType = Context> = {
   RoomUpdatedResult?: RoomUpdatedResultResolvers<ContextType>;
   Rooms?: RoomsResolvers<ContextType>;
   RoomsResult?: RoomsResultResolvers<ContextType>;
+  Subscription?: SubscriptionResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
   UserBy?: UserByResolvers<ContextType>;
   UserDeleted?: UserDeletedResolvers<ContextType>;

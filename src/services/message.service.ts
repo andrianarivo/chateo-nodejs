@@ -1,5 +1,11 @@
 import { Model, QueryOptions } from 'mongoose';
 import { customResponse } from '@helpers';
+import { ObjectSchema } from 'joi';
+import { MessageModel } from '@entities/message/model';
+import getPubSub from '@config/pubsub';
+import { MessageCreatedInput } from '@generated/types';
+
+const pubsub = getPubSub();
 
 export const getAllByRoom = async <T>(
   EntityModel: Model<any>,
@@ -22,4 +28,23 @@ export const getAllByRoom = async <T>(
   if (foundEntities && Array.isArray(foundEntities) && foundEntities.length > 0)
     return customResponse.entities<T>(typeNameSuccess, foundEntities);
   return customResponse.message(typeNameError, ErrorMessage);
+};
+
+export const create = async (
+  input: MessageCreatedInput,
+  entitySchema: ObjectSchema,
+  SuccessMessage: string,
+  typeNameSuccess: string,
+  typeNameError: string,
+) => {
+  const { error } = entitySchema.validate(input);
+  if (error) return customResponse.message(typeNameError, error.message);
+  const createdMessage = new MessageModel(input);
+  await createdMessage.save();
+  let newMessage = await MessageModel.findById(createdMessage._id).populate('author').lean();
+  newMessage = newMessage || createdMessage;
+  pubsub.publish('MESSAGE_CREATED', {
+    messageCreated: customResponse.operation(typeNameSuccess, newMessage, SuccessMessage),
+  });
+  return customResponse.operation(typeNameSuccess, newMessage, SuccessMessage);
 };

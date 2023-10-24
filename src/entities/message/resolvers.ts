@@ -8,9 +8,12 @@ import type {
   MessageUpdatedResult,
   MessageRemovedResult,
 } from '@generated/types';
+import getPubSub from '@config/pubsub';
 import { MessageModel } from './model';
 import { ErrorMessages, SuccessMessages } from './constants';
 import { createMessageSchema, updateMessageSchema } from './validation';
+
+const pubsub = getPubSub();
 
 export const resolvers: Resolvers = {
   Query: {
@@ -33,8 +36,7 @@ export const resolvers: Resolvers = {
 
   Mutation: {
     createMessage: async (_parent, args): Promise<MessageCreatedResult> =>
-      resolver.create(
-        MessageModel,
+      messageResolver.create(
         args.input,
         createMessageSchema,
         SuccessMessages.MESSAGE_CREATED,
@@ -61,5 +63,11 @@ export const resolvers: Resolvers = {
         'MessageRemoved',
         'MessageNotFound',
       ),
+  },
+
+  Subscription: {
+    messageCreated: {
+      subscribe: () => pubsub.asyncIterator(['MESSAGE_CREATED']) as any,
+    },
   },
 };

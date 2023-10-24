@@ -8,9 +8,10 @@ import depthLimit from 'graphql-depth-limit';
 import responseCachePlugin from 'apollo-server-plugin-response-cache';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
-import { GraphQLSchema } from 'graphql';
+import { GraphQLSchema, execute, subscribe } from 'graphql';
 import { log } from '@services/logger.service';
 import { morgan } from '@middlewares';
+import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { context } from './context';
 
 const port = process.env.PORT || 4000;
@@ -32,12 +33,29 @@ export const initializeApolloExpress = async (schema: GraphQLSchema) => {
 
   const httpServer = http.createServer(app);
 
+  const subscriptionServer = SubscriptionServer.create(
+    { schema, execute, subscribe },
+    { server: httpServer, path: '/graphql' },
+  );
+
   const server = new ApolloServer({
     introspection: process.env.NODE_ENV !== 'production',
     context,
     schema,
     csrfPrevention: true,
-    plugins: [responseCachePlugin(), ApolloServerPluginDrainHttpServer({ httpServer })],
+    plugins: [
+      responseCachePlugin(),
+      ApolloServerPluginDrainHttpServer({ httpServer }),
+      {
+        async serverWillStart() {
+          return {
+            async drainServer() {
+              subscriptionServer.close();
+            },
+          };
+        },
+      },
+    ],
     validationRules: [depthLimit(7)],
     formatError: (err) => {
       if (err.message.startsWith('Database Error:')) {
