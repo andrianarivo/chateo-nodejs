@@ -7,6 +7,7 @@ import { AuthModel } from '@entities/auth/model';
 import type { FoundUserEntity, JwtExpiration, MaybeUserEntity, PayloadData } from '@entities/auth/interface';
 import { cookieName, ErrorMessages, Permissions } from '@entities/auth/constants';
 import { CustomError, StatusCode, getEntityFromOperation } from '@helpers';
+import { UserModel } from '@entities/user/model';
 
 const { JWT_ACCESS_SECRET, REFRESH_TOKEN_ENDPOINT } = process.env;
 
@@ -102,4 +103,37 @@ export const findUser = async (inputEmail: string): Promise<MaybeUserEntity> => 
     },
     role: fetchedRole,
   };
+};
+
+export const findMe = async (req: Request, permission?: string, argsId?: Types.ObjectId) => {
+  // Get authorization header
+  const authHeader = req.get('Authorization');
+  // Check for 'Bearer' scheme
+  if (!authHeader?.startsWith('Bearer ')) return new AuthenticationError(ErrorMessages.NOT_AUTHENTICATED);
+  // Check for token
+  const token = authHeader?.split(' ')[1];
+  if (!token) return new AuthenticationError(ErrorMessages.NOT_AUTHENTICATED);
+  try {
+    const decoded = jwtVerify(token, JWT_ACCESS_SECRET as string) as PayloadData;
+    // Check permission for operations on self
+    if (permission && permission === Permissions.SELF && argsId && argsId !== decoded.userId)
+      return new ForbiddenError(ErrorMessages.NOT_AUTHORIZED);
+    // Check permission for operations on owned entities
+    if (permission && permission === Permissions.OWN && argsId) {
+      const { query, operationName } = req.body;
+      const queryName = operationName || query.split(' ')[1];
+      const entityName = getEntityFromOperation(modelNames(), queryName);
+      if (!entityName) return new CustomError(ErrorMessages.INVALID_OPERATION_NAME, StatusCode.InvalidOperationName);
+      const findOwnedEntity =
+        entityName && (await model(entityName).findOne({ _id: argsId, user: decoded.userId }).lean());
+      if (!findOwnedEntity) return new ForbiddenError(ErrorMessages.NOT_AUTHORIZED);
+    }
+    // Token verified and no role provided, user is authenticated
+    // When role is provided check if user exists with id from token
+    const authorizedUser = await UserModel.findOne({ _id: decoded.userId });
+    if (!authorizedUser) return new ForbiddenError(ErrorMessages.NOT_AUTHORIZED);
+    return authorizedUser;
+  } catch (error) {
+    return new CustomError(error, StatusCode[error.constructor.name as keyof typeof StatusCode]);
+  }
 };

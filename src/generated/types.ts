@@ -275,6 +275,7 @@ export type Query = {
   getAllMessages: MessagesResult;
   getAllRooms: RoomsResult;
   getAllUsers: UsersResult;
+  getMe: UserResult;
   getMessageByField: MessageResult;
   getMessageById: MessageResult;
   getMessagesByRoom: MessagesResult;
@@ -338,6 +339,7 @@ export type QueryGetMessageByIdArgs = {
 export type QueryGetMessagesByRoomArgs = {
   filter?: InputMaybe<FilterInput>;
   paginate?: InputMaybe<PaginationInput>;
+  room: Scalars['ObjectId'];
   sort?: InputMaybe<SortInput>;
 };
 
@@ -919,9 +921,10 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   getAllMessages?: Resolver<ResolversTypes['MessagesResult'], ParentType, ContextType, Partial<QueryGetAllMessagesArgs>>;
   getAllRooms?: Resolver<ResolversTypes['RoomsResult'], ParentType, ContextType, Partial<QueryGetAllRoomsArgs>>;
   getAllUsers?: Resolver<ResolversTypes['UsersResult'], ParentType, ContextType, Partial<QueryGetAllUsersArgs>>;
+  getMe?: Resolver<ResolversTypes['UserResult'], ParentType, ContextType>;
   getMessageByField?: Resolver<ResolversTypes['MessageResult'], ParentType, ContextType, RequireFields<QueryGetMessageByFieldArgs, 'field' | 'value'>>;
   getMessageById?: Resolver<ResolversTypes['MessageResult'], ParentType, ContextType, RequireFields<QueryGetMessageByIdArgs, 'id'>>;
-  getMessagesByRoom?: Resolver<ResolversTypes['MessagesResult'], ParentType, ContextType, Partial<QueryGetMessagesByRoomArgs>>;
+  getMessagesByRoom?: Resolver<ResolversTypes['MessagesResult'], ParentType, ContextType, RequireFields<QueryGetMessagesByRoomArgs, 'room'>>;
   getRoomByField?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByFieldArgs, 'field' | 'value'>>;
   getRoomById?: Resolver<ResolversTypes['RoomResult'], ParentType, ContextType, RequireFields<QueryGetRoomByIdArgs, 'id'>>;
   getUserByField?: Resolver<ResolversTypes['UserResult'], ParentType, ContextType, RequireFields<QueryGetUserByFieldArgs, 'field' | 'value'>>;

@@ -51,6 +51,7 @@ export const typeDefs = gql`
     getAllUsers(sort: SortInput, filter: FilterInput, paginate: PaginationInput): UsersResult!
     getUserById(id: ObjectId!): UserResult!
     getUserByField(field: String!, value: String!): UserResult!
+    getMe: UserResult!
   }
 
   # Mutations
