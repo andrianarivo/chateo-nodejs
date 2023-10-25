@@ -9,6 +9,7 @@ import type {
   MessageRemovedResult,
 } from '@generated/types';
 import getPubSub from '@config/pubsub';
+import { withFilter } from 'graphql-subscriptions';
 import { MessageModel } from './model';
 import { ErrorMessages, SuccessMessages } from './constants';
 import { createMessageSchema, updateMessageSchema } from './validation';
@@ -67,7 +68,10 @@ export const resolvers: Resolvers = {
 
   Subscription: {
     messageCreated: {
-      subscribe: () => pubsub.asyncIterator(['MESSAGE_CREATED']) as any,
+      subscribe: withFilter(
+        () => pubsub.asyncIterator(['MESSAGE_CREATED']),
+        (payload, variables) => payload.messageCreated.entity.room.toString() === variables.room.toString(),
+      ) as any,
     },
   },
 };

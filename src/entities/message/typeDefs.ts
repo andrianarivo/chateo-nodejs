@@ -75,6 +75,6 @@ export const typeDefs = gql`
 
   # Subscriptions
   type Subscription {
-    messageCreated: MessageCreatedResult!
+    messageCreated(room: ObjectId!): MessageCreatedResult!
   }
 `;
