@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: Refactor - Adding filters to Subscriptions">
+    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: Update README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -65,7 +66,8 @@
       <workItem from="1698129186691" duration="15535000" />
       <workItem from="1698162869065" duration="9812000" />
       <workItem from="1698215383365" duration="3154000" />
-      <workItem from="1698252016278" duration="1395000" />
+      <workItem from="1698252016278" duration="3051000" />
+      <workItem from="1698263269521" duration="2225000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -131,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698239886747</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="chore: Update README.md">
+      <option name="closed" value="true" />
+      <created>1698261094268</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1698261094268</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +169,7 @@
     <MESSAGE value="feat: Message Created PubSub" />
     <MESSAGE value="chore: Switch to graphql-ws for PubSub" />
     <MESSAGE value="chore: Refactor - Adding filters to Subscriptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Refactor - Adding filters to Subscriptions" />
+    <MESSAGE value="chore: Update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: Update README.md" />
   </component>
 </project>

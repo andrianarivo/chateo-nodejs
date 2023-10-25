@@ -85,7 +85,7 @@ Express.js, GraphQL and MongoDB.
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://google.com)
+- [Live Demo Link](https://dev--astonishing-biscuit-7921d9.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -121,15 +121,23 @@ Install this project with:
 
 ```sh
   cd my-project
-  yarn install
+  yarn install; cp .env.example .env
 ```
 
 ### Usage
 
 To run the project, execute the following command:
 
+- In development mode:
+
 ```sh
   yarn dev
+```
+
+- In production mode:
+
+```sh
+  yarn build; yarn start
 ```
 
 ### Run tests
