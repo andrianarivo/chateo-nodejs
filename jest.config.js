@@ -31,4 +31,6 @@ module.exports = {
     '@types/(.*)': '<rootDir>/src/tasks/$1',
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
-};
+  globalSetup: './jest/globalSetup.ts',
+  globalTeardown: './jest/globalTeardown.ts',
+}

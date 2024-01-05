@@ -1,13 +1,9 @@
-import 'dotenv/config';
-import { schema, permissions } from '@config/schema';
-import { applyMiddleware } from 'graphql-middleware';
-import { initializeApolloExpress } from '@config/apollo';
-import { initializeDatabaseConnection } from '@config/db';
+import server from './server'
 
-const initializeServer = async (): Promise<void> => {
-  const generatedSchema = applyMiddleware(schema, permissions);
-  initializeApolloExpress(generatedSchema);
-  await initializeDatabaseConnection();
-};
+function main() {
+  server.listen(4000, () => {
+    console.info(`Server is running on http://172.19.0.3:4000/graphql`)
+  })
+}
 
-initializeServer();
+main()

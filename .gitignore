@@ -12,5 +12,6 @@ coverage/
 node_modules/
 # Environment variables
 .env
+.env.test
 # VS Code
 .vscode/
