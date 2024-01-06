@@ -4,117 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: Dockerisation">
-      <change afterPath="$PROJECT_DIR$/babel.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest/globalSetup.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest/globalTeardown.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__tests__/hello.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/builder.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/context.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/db.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pubsub.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/schema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/buildExecutor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/login.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/operations.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/printSchema.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/seedTestDatabase.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/yarn.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/yarn.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="refactor: Create Template for GraphQL-Prisma-TS">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/codegen.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__tests__/good.test.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__tests__/test.server.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bin/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/apollo.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/context.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/db.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/globalTypeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/pubsub.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/schema.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/admin/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/auth/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/message/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/room/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/user/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/CustomError.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/customResponse.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/getEntityFromOperation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest/globalSetup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest/globalSetup.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jest/globalTeardown.ts" beforeDir="false" afterPath="$PROJECT_DIR$/jest/globalTeardown.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/debug.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/log.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/limiter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/loader.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/morgan.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middlewares/rules.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seeders/data/users.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seeders/seedAdmin.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/seeders/seedUsers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/crud.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/logger.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/mail.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/message.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/generateEntity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/default/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/constants.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/interface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/permissions.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/resolvers.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/typeDefs.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tasks/templates/user/validation.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/environment.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.eslint.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.eslint.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,27 +39,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/david/Documents/novity/chateo-nodejs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/home/david/Documents/novity/chateo-nodejs/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/home/david/Documents/novity/chateo-nodejs/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/david/Documents/novity/chateo-nodejs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/david/Documents/novity/chateo-nodejs/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/david/Documents/novity/chateo-nodejs/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -196,6 +92,7 @@
       <workItem from="1704362372026" duration="5979000" />
       <workItem from="1704467203189" duration="6744000" />
       <workItem from="1704478945470" duration="2340000" />
+      <workItem from="1704526307358" duration="6398000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -285,7 +182,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704370488090</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="update package.json">
+      <option name="closed" value="true" />
+      <created>1704526566333</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704526566333</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor: Create Template for GraphQL-Prisma-TS">
+      <option name="closed" value="true" />
+      <created>1704532369110</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1704532369110</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +229,9 @@
     <MESSAGE value="chore: Update README.md" />
     <MESSAGE value="chore: Update README.md and Dependencies" />
     <MESSAGE value="chore: Dockerisation" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: Dockerisation" />
+    <MESSAGE value="update package.jso" />
+    <MESSAGE value="update package.json" />
+    <MESSAGE value="refactor: Create Template for GraphQL-Prisma-TS" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: Create Template for GraphQL-Prisma-TS" />
   </component>
 </project>

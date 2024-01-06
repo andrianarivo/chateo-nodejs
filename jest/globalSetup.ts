@@ -1,8 +1,8 @@
 import server from '../src/server'
-import debug from '../src/debug'
+import log from '../src/log'
 
 export default async function globalSetup() {
   server.listen(4001, () => {
-    debug('Test server running')
+    log('Test server running')
   })
 }
