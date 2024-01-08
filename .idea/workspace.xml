@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: implement log">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/npm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: update GH Actions">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,27 +34,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "dev",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/david/Documents/novity/chateo-nodejs/.github/workflows",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/home/david/Documents/novity/chateo-nodejs/node_modules/prettier",
-    "settings.editor.selected.configurable": "settings.javascript.prettier",
-    "ts.external.directory.path": "/home/david/Documents/novity/chateo-nodejs/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/david/Documents/novity/chateo-nodejs/.github/workflows&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/home/david/Documents/novity/chateo-nodejs/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/david/Documents/novity/chateo-nodejs/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.github/workflows" />
@@ -90,6 +89,7 @@
       <workItem from="1704467203189" duration="6744000" />
       <workItem from="1704478945470" duration="2340000" />
       <workItem from="1704526307358" duration="6939000" />
+      <workItem from="1704730968584" duration="2412000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -203,7 +203,47 @@
       <option name="project" value="LOCAL" />
       <updated>1704533885099</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="chore: update GH Actions">
+      <option name="closed" value="true" />
+      <created>1704731923342</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1704731923342</updated>
+    </task>
+    <task id="LOCAL-00016" summary="chore: update GH Actions">
+      <option name="closed" value="true" />
+      <created>1704732266772</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1704732266772</updated>
+    </task>
+    <task id="LOCAL-00017" summary="chore: update GH Actions">
+      <option name="closed" value="true" />
+      <created>1704732398595</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1704732398595</updated>
+    </task>
+    <task id="LOCAL-00018" summary="chore: update GH Actions">
+      <option name="closed" value="true" />
+      <created>1704732748749</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1704732748749</updated>
+    </task>
+    <task id="LOCAL-00019" summary="chore: update GH Actions">
+      <option name="closed" value="true" />
+      <created>1704733279230</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1704733279230</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +278,7 @@
     <MESSAGE value="update package.json" />
     <MESSAGE value="refactor: Create Template for GraphQL-Prisma-TS" />
     <MESSAGE value="chore: implement log" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: implement log" />
+    <MESSAGE value="chore: update GH Actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: update GH Actions" />
   </component>
 </project>
