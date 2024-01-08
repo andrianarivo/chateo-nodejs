@@ -9,9 +9,8 @@ export const yoga = createYoga({
   context: createContext,
   plugins: [
     useJWT({
-      audience: process.env.AUTH0_AUDIENCE,
-      issuer: `https://${process.env.AUTH0_DOMAIN}/`,
-      signingKey: process.env.AUTH0_SIGNING_KEY ?? '',
+      issuer: 'http://graphql-yoga.com',
+      signingKey: process.env.JWT_SIGNING_KEY ?? '',
     }),
   ],
 })

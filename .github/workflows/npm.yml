@@ -1,4 +1,4 @@
-name: Lint/Test/Build with yarn
+name: Lint/Test/Build with npm
 
 on:
   push:
@@ -18,11 +18,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn install
+        run: npm install
       - name: ESlint
-        run: yarn lint
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
@@ -45,28 +45,34 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn install
+        run: npm install
+      - name: Migrate Database
+        run: npx prisma migrate dev
       - name: Run tests with Jest
-        run: yarn test
+        run: npm run test
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
+          DATABASE_URL: postgresql://postgres:root@localhost:5432/chateo_test
+          PORT: 4000
+          JWT_SIGNING_KEY: DY4JrTdUBaX9s2UrTtih9yqr587O34Jj
+          DEBUG: chateo:test
 
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [20.10.0]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: 'npm'
       - name: Install dependencies
-        run: yarn install
+        run: npm install
       - name: Build with TypeScript
-        run: yarn build
+        run: npm run build
