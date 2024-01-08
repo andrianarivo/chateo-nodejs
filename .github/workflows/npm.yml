@@ -51,7 +51,7 @@ jobs:
       - name: Set environment variables
         run: |
           touch .env
-          echo DATABASE_URL=postgresql://postgres:root@localhost:5432/chateo_test >> .env
+          echo DATABASE_URL=postgresql://postgres:root@postgres:5432/chateo_test >> .env
           echo PORT=4000 >> .env
           echo JWT_SIGNING_KEY=DY4JrTdUBaX9s2UrTtih9yqr587O34Jj >> .env
           echo DEBUG=chateo:test >> .env
