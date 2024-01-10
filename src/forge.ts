@@ -10,7 +10,7 @@ cipher.update(forge.util.createBuffer(someBytes))
 cipher.finish()
 const encrypted = cipher.output
 // outputs encrypted hex
-console.log(encrypted.toHex())
+console.log('Encrypted: ', encrypted.toHex())
 
 // decrypt some bytes using CBC mode
 // (other modes include: CFB, OFB, CTR, and GCM)
@@ -19,4 +19,4 @@ decipher.start({ iv })
 decipher.update(encrypted)
 decipher.finish() // check 'result' for true/false
 // outputs decrypted hex
-console.log(decipher.output.toString())
+console.log('Decrypted: ', decipher.output.toString())
