@@ -13,12 +13,9 @@ const bobKey = bob.generateKeys('hex')
 const aliceSecret = alice.computeSecret(bobKey, 'hex')
 const bobSecret = bob.computeSecret(aliceKey, 'hex')
 
-const alicePair = [aliceSecret, aliceKey]
-const bobPair = [bobSecret, bobKey]
-
 const salt = 'salt'
 const numIterations = 10
-const key1 = forge.pkcs5.pbkdf2(alicePair[0].toString(), salt, numIterations, 16)
+const key1 = forge.pkcs5.pbkdf2(aliceSecret.toString(), salt, numIterations, 16)
 const iv = forge.random.getBytesSync(16)
 
 const cipher = forge.cipher.createCipher('AES-CBC', key1)
@@ -29,7 +26,7 @@ cipher.finish()
 const encrypted = cipher.output
 console.log('Encrypted: ', encrypted.toHex())
 
-const key2 = forge.pkcs5.pbkdf2(bobPair[0].toString(), salt, numIterations, 16)
+const key2 = forge.pkcs5.pbkdf2(bobSecret.toString(), salt, numIterations, 16)
 
 const decipher = forge.cipher.createDecipher('AES-CBC', key2)
 decipher.start({ iv })
