@@ -1,5 +1,5 @@
 import { User } from '@prisma/client'
-import { prisma } from '../db'
+import db from '../db'
 
 // eslint-disable-next-line import/no-mutable-exports
 let userOne: User
@@ -7,13 +7,13 @@ let userOne: User
 let userTwo: User
 
 const setupDatabase = async () => {
-  userOne = await prisma.user.create({
+  userOne = await db.user.create({
     data: {
       name: 'Test User',
       email: 'test.user@mail.test',
     },
   })
-  userTwo = await prisma.user.create({
+  userTwo = await db.user.create({
     data: {
       name: 'Test User 2',
       email: 'test.user2@mail.test',
@@ -22,7 +22,7 @@ const setupDatabase = async () => {
 }
 
 const tearDownDatabase = async () => {
-  await prisma.user.deleteMany({
+  await db.user.deleteMany({
     where: {
       OR: [{ id: userOne.id }, { id: userTwo.id }],
     },

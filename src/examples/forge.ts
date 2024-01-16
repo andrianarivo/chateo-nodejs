@@ -1,4 +1,5 @@
 import forge from 'node-forge'
+import log from '../log'
 
 const key = forge.random.getBytesSync(32)
 const iv = forge.random.getBytesSync(32)
@@ -10,7 +11,7 @@ cipher.update(forge.util.createBuffer(someBytes))
 cipher.finish()
 const encrypted = cipher.output
 // outputs encrypted hex
-console.log('Encrypted: ', encrypted.toHex())
+log('Encrypted: ', encrypted.toHex())
 
 // decrypt some bytes using CBC mode
 // (other modes include: CFB, OFB, CTR, and GCM)
@@ -19,4 +20,4 @@ decipher.start({ iv })
 decipher.update(encrypted)
 decipher.finish() // check 'result' for true/false
 // outputs decrypted hex
-console.log('Decrypted: ', decipher.output.toString())
+log('Decrypted: ', decipher.output.toString())

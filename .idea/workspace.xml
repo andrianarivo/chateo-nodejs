@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="chore: update port to be dynamic">
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-01-12_11_44_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-01-12_11_44__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+    <list default="true" id="b947cd37-7f2d-4aaa-bda1-104e7296b4c5" name="Changes" comment="feat: auth with jwt">
+      <change beforePath="$PROJECT_DIR$/src/examples/diffie-hellman.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/diffie-hellman.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/examples/forge.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/examples/forge.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +50,9 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\andri\\Documents\\novity\\chateo-nodejs\\node_modules\\prettier",
+    "prettierjs.PrettierConfiguration.Package": "/home/david/Documents/novity/chateo-nodejs/node_modules/prettier",
     "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
-    "ts.external.directory.path": "/home/david/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/home/david/Documents/novity/chateo-nodejs/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -98,6 +95,7 @@
       <workItem from="1704798953995" duration="7872000" />
       <workItem from="1704899024685" duration="7080000" />
       <workItem from="1704977409764" duration="2573000" />
+      <workItem from="1705419791942" duration="3795000" />
     </task>
     <task id="LOCAL-00001" summary="chore: Install GQL with Typescript">
       <option name="closed" value="true" />
@@ -275,7 +273,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704808778685</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="chore: update port to be dynamic">
+      <option name="closed" value="true" />
+      <created>1705053308269</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1705053308269</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: auth with jwt">
+      <option name="closed" value="true" />
+      <created>1705423553598</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1705423553598</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +328,7 @@
     <MESSAGE value="feat: using forge to encrypt messages" />
     <MESSAGE value="chore: update hostname and logs" />
     <MESSAGE value="chore: update port to be dynamic" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: update port to be dynamic" />
+    <MESSAGE value="feat: auth with jwt" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: auth with jwt" />
   </component>
 </project>

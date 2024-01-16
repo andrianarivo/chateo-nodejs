@@ -1,5 +1,6 @@
 import { createDiffieHellman } from 'node:crypto'
 import forge from 'node-forge'
+import log from '../log'
 
 // Generate Alice's keys...
 const alice = createDiffieHellman(1024)
@@ -24,7 +25,7 @@ cipher.start({ iv })
 cipher.update(forge.util.createBuffer(someBytes))
 cipher.finish()
 const encrypted = cipher.output
-console.log('Encrypted: ', encrypted.toHex())
+log('Encrypted: ', encrypted.toHex())
 
 const key2 = forge.pkcs5.pbkdf2(bobSecret.toString(), salt, numIterations, 16)
 
@@ -32,4 +33,4 @@ const decipher = forge.cipher.createDecipher('AES-CBC', key2)
 decipher.start({ iv })
 decipher.update(encrypted)
 decipher.finish()
-console.log('Decrypted: ', decipher.output.toString())
+log('Decrypted: ', decipher.output.toString())
